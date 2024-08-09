@@ -48,7 +48,6 @@ class Ads
     }
     public  function  deleteAds($id)
     {
-
         $sql = "DELETE FROM ads WHERE id = :id";
         $stmt = $this -> pdo -> prepare($sql);
         $stmt -> bindParam(':id', $id);
