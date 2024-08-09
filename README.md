@@ -11,7 +11,7 @@ NTRA is a web application designed to help students and employees of the Najot T
 
 ## Technologies Used
 
-- **Frontend:**    | (will be added in future updates😁)
+- **Frontend:**    |   (will be added in future updates😁)
     - HTML5
     - CSS3
     - JavaScript (React)   
@@ -22,7 +22,7 @@ NTRA is a web application designed to help students and employees of the Najot T
 - **Database:**
     - MySQL
 
-- **API Testing and Development:**   | (will be added in future updates😁)
+- **API Testing and Development:**   |   (will be added in future updates😁)
     - Postman
     - Ngrok for local server exposure
 
@@ -95,11 +95,11 @@ Feel free to submit issues or pull requests. For major changes, please open an i
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the MIT, Harvard, Stanford, Oxford, Cambridge and other top Universities License. See the [LICENSE](LICENSE) file for more information.
 
 ## Contact
 
-For any questions or suggestions, please contact us at [your_email@example.com].
+For any questions or suggestions, please contact us at [aminovjamshid777@example.com].
 
 ---
 
