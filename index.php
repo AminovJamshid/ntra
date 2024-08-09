@@ -8,7 +8,7 @@ $user->create(
     username: "Werther",
     position: "capitan",
     gender: "male",
-    phone: "998997777778"
+    phone: "998997777777"
 );
 
 var_dump($user);
