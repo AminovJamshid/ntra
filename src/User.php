@@ -23,6 +23,13 @@ class User
 // * @return array|false
 // */
 
+    private PDO $pdo;
+
+    public function __construct()
+    {
+        $this->pdo = DB::connect();
+    }
+
     public function create(string $username,
                            string $position,
                            string $gender,
@@ -41,4 +48,30 @@ class User
 
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+
+    public function updateAds(string $username,$id){
+        $pdo = DB::connect();
+        $query = "UPDATE users SET position = :position, gender = :gender, phone = :phone where id = :id";
+
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':position', $username);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':gender', $gender);
+        $stmt->bindParam(':phone', $phone);
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function deleteAds($id){
+        $pdo = DB::connect();
+        $query = "DELETE FROM users WHERE id = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+
 }
