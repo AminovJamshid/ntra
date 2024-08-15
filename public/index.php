@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./src/output.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+    <title>NTRA - Rent helper</title>
 </head>
 <body>
-<h1 class="text-3xl font-bold underline">
-    Hello world!
-</h1>
+<?php require_once 'partials/navbar.php';
+require_once 'partials/content.php'?>
 </body>
 </html>

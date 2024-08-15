@@ -13,11 +13,21 @@ class Ads
         $this->pdo = DB::connect();
     }
 
-    public function createAds($title, $description, $user_id, $status_id, $branch_id, $address, $price, $rooms)
+    public function createAds(
+        int $id,
+        string $title,
+        string $description,
+        int $user_id,
+        int $status_id,
+        int $branch_id,
+        string  $address,
+        float  $price,
+        int $rooms): array|false
     {
-        $stmt = $this->pdo->prepare("INSERT INTO ads (title, description, user_id, status_id, branch_id, address, price, rooms, created_at) 
+        $query = $this->pdo->prepare("INSERT INTO ads (title, description, user_id, status_id, branch_id, address, price, rooms, created_at) 
                                      VALUES (:title, :description, :user_id, :status_id, :branch_id, :address, :price, :rooms, NOW())");
 
+        $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':title', $title);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':user_id', $user_id);
@@ -27,13 +37,41 @@ class Ads
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':rooms', $rooms);
         $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public  function  updateAds($id, $title, $description, $user_id, $status_id, $branch_id, $address, $price, $rooms)
+    public function getAd($id): array
     {
-        $sql = "UPDATE ads SET title = :title, description = :description, user_id = :user_id, status_id = :status_id,
+        $query = "SELECT * FROM ads WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
+    public function getAds(): false|array
+    {
+        $query = "SELECT *, ads.address AS address FROM ads JOIN branch ON branch.id = ads.branch_id";
+        return $this->pdo->query("SELECT * FROM ads")->fetchAll();
+    }
+
+    public  function  updateAds(
+        int $id,
+        string $title,
+        string $description,
+        int $user_id,
+        int $status_id,
+        int $branch_id,
+        string  $address,
+        float  $price,
+        int $rooms): array|false
+    {
+        $query = "UPDATE ads SET title = :title, description = :description, user_id = :user_id, status_id = :status_id,
                branch_id = :branch_id, address = :address, price = :price, rooms = :rooms WHERE id = :id";
-        $stmt = $this -> pdo -> prepare($sql);
+        $stmt = $this -> pdo -> prepare($query);
         $stmt -> bindParam(':id', $id);
         $stmt -> bindParam(':title', $title);
         $stmt -> bindParam(':description', $description);
@@ -45,13 +83,16 @@ class Ads
         $stmt -> bindParam(':rooms', $room);
         $stmt -> execute();
 
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public  function  deleteAds($id)
+
+    public  function  deleteAds($id): array|false
     {
-        $sql = "DELETE FROM ads WHERE id = :id";
-        $stmt = $this -> pdo -> prepare($sql);
+        $query = "DELETE FROM ads WHERE id = :id";
+        $stmt = $this -> pdo -> prepare($query);
         $stmt -> bindParam(':id', $id);
         $stmt -> execute();
 
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
