@@ -25,7 +25,15 @@
             <img src="https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                  alt="Product" class="h-80 w-72 object-cover rounded-t-xl"/>
             <div class="px-4 py-3 w-72">
-                <span class="text-gray-400 mr-3 uppercase text-xs"><?php echo $ad->address ?></span>
+                <div class="flex">
+                    <span class="text-gray-400 mr-3 uppercase text-xs">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="20" height="20" stroke-width="1.5" stroke="currentColor" class="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                    </svg>
+                    </span>
+                    <?php echo $ad->address ?>
+                </div>
                 <p class="text-lg font-bold text-black truncate block capitalize"><?php echo $ad->title ?></p>
                 <div class="flex items-center">
                     <p class="text-lg font-semibold text-black cursor-auto my-3">$<?php echo $ad->price ?></p>
