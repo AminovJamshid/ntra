@@ -17,7 +17,6 @@
     <?php
     $ads = getAds();
 //    dd($ads);
-
     foreach ($ads as $ad):?>
 
     <!--   ✅ Product card 1 - Starts Here 👇 -->
@@ -26,13 +25,10 @@
             <img src="https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                  alt="Product" class="h-80 w-72 object-cover rounded-t-xl"/>
             <div class="px-4 py-3 w-72">
-                <span class="text-gray-400 mr-3 uppercase text-xs">Brand</span>
-                <p class="text-lg font-bold text-black truncate block capitalize">Product Name</p>
+                <span class="text-gray-400 mr-3 uppercase text-xs"><?php echo $ad->address ?></span>
+                <p class="text-lg font-bold text-black truncate block capitalize"><?php echo $ad->title ?></p>
                 <div class="flex items-center">
-                    <p class="text-lg font-semibold text-black cursor-auto my-3">$149</p>
-                    <del>
-                        <p class="text-sm text-gray-600 cursor-auto ml-2">$199</p>
-                    </del>
+                    <p class="text-lg font-semibold text-black cursor-auto my-3">$<?php echo $ad->price ?></p>
                     <div class="ml-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                              fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
@@ -47,6 +43,7 @@
         </a>
     </div>
     <!--   🛑 Product card 1 - Ends Here  -->
+
     <?php
     endforeach; ?>
 }

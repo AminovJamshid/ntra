@@ -1,15 +1,17 @@
 <?php
-function dd($args)
+
+use JetBrains\PhpStorm\NoReturn;
+use App\Ads;
+#[NoReturn] function dd($args)
 {
     echo '<pre>';
     var_dump($args);
     echo '</pre>';
     die();
-
 }
 
-function getAds()
+function getAds(): false|array
 {
-    return (new \App\Ads())->getAds();
+    return (new Ads())->getAds();
 
 }

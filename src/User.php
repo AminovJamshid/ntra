@@ -49,7 +49,8 @@ class User
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function updateAds(string $username,$id){
+    public function updateAds(string $username, $id)
+    {
         $pdo = DB::connect();
         $query = "UPDATE users SET position = :position, gender = :gender, phone = :phone where id = :id";
 
@@ -63,7 +64,8 @@ class User
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function deleteAds($id){
+    public function deleteAds($id)
+    {
         $pdo = DB::connect();
         $query = "DELETE FROM users WHERE id = :id";
         $stmt = $pdo->prepare($query);
