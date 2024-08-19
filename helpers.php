@@ -1,53 +1,53 @@
 <?php
 
-use JetBrains\PhpStorm\NoReturn;
+declare(strict_types=1);
 
-#[NoReturn] function dd($args): void
+use App\Ads;
+
+function dd($args)
 {
-    echo '<pre>';
-    var_dump($args);
-    echo '</pre>';
+    echo "<pre>";
+    print_r($args);
+    echo "</pre>";
     die();
-
 }
 
 function getAds(): false|array
 {
-    return (new \App\Ads())->getAds();
-
+    return (new Ads())->getAds();
 }
 
-function  basePath($path): string
+function basePath(string $path): string
 {
     return __DIR__.$path;
 }
-function  LoadView($path, array | null $args = null): void
+
+function loadView(string $path, array|null $args = null): void
 {
-    $filePath = basePath("/public/pages/" . $path . ".php");
+    $filePath = basePath('/public/pages/'.$path.'.php');
     if (!file_exists($filePath)) {
-        echo "File not found $filePath";
+        echo "Required view not found: $filePath";
         return;
-
     }
-    if (is_array($args)) {
 
+    if (is_array($args)) {
         extract($args);
     }
-    require_once  $filePath;
+    require $filePath;
 }
-function  LoadPartials($path, array | null $args = null): void
-{
-    if (is_array($args)) {
 
-        extract($args);
-    }
-    require_once  basePath("/public/partials/" . $path . ".php");
-}
-function  LoadController($path, array | null $args = null): void
+function loadPartials(string $path, array|null $args = null): void
 {
     if (is_array($args)) {
         extract($args);
     }
-    require_once  basePath("/controller/" . $path . ".php");
+    require basePath('/public/partials/'.$path.'.php');
 }
 
+function loadController(string $path, array|null $args = null): void
+{
+    if (is_array($args)) {
+        extract($args);
+    }
+    require basePath('/controllers/'.$path.'.php');
+}

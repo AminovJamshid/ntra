@@ -11,8 +11,8 @@ class DB
     public static function connect(): PDO
     {
         $dsn = http_build_query([
-            'host' => '$_ENV[DB_HOST]',
-            'dbname' => '$_ENV[DB_NAME]',
+            'host'   => $_ENV['DB_HOST'],
+            'dbname' => $_ENV['DB_NAME'],
         ], '', ';');
 
         return new PDO(

@@ -11,5 +11,5 @@ use App\Ads;
 
 $ad = (new Ads())->getAd($id);
 
-loadView("single-ads", ["ad" => $ad]);
+loadView("single-ad", ["ad" => $ad]);
 

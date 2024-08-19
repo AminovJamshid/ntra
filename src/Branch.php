@@ -1,46 +1,49 @@
 <?php
 
-namespace App;
+declare(strict_types=1);
 
-use PDO;
+namespace App;
 
 class Branch
 {
+    private \PDO $pdo;
 
-    private PDO  $pdo;
     public function __construct()
     {
         $this->pdo = DB::connect();
     }
 
-    public  function  createBranch($name, $address): void
+    public function createBranch(string $name, string $address): bool
     {
-
-        $query = "INSERT INTO branch (name, address, created_at) VALUES (:name, :address, NOW())";
-        $stmt = $this -> pdo -> prepare($query);
-        $stmt -> bindParam(':name', $name, PDO::PARAM_STR);
-        $stmt -> bindParam(':address', $address, PDO::PARAM_STR);
-        $stmt -> execute();
-
-    }
-    public  function  updateBranch($id, $name, $address): void
-    {
-        $query = "UPDATE branch SET name = :name, address = :address WHERE id = :id";
-        $stmt = $this -> pdo -> prepare($query);
-        $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt -> bindParam(':name', $name, PDO::PARAM_STR);
-        $stmt -> bindParam(':address', $address, PDO::PARAM_STR);
-        $stmt -> execute();
-
+        $stmt = $this->pdo->prepare("INSERT INTO branch (name, address, created_at)
+                                          VALUES (:name, :address, NOW())");
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':address', $address);
+        return $stmt->execute();
     }
 
-    public  function  deleteBranch($id): void
+    public function updateBranch(int $id, string $name, string $address): bool
     {
-        $query = "DELETE FROM branch WHERE id = :id";
-        $stmt = $this -> pdo -> prepare($query);
-        $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt -> execute();
+        $stmt = $this->pdo->prepare("UPDATE branch SET name = :name, address = :address WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':address', $address);
 
+        return $stmt->execute();
     }
 
+    public function getBranch(int $id)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM branch WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function deleteBranch(int $id): bool
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM branch WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
 }
