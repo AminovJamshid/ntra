@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 /**
  * @var $id
+ *
  */
 
-dd($id);
+use App\Ads;
 
-//(new App\Ads())->getAd();
+$ad = (new Ads())->getAd($id);
+
+loadView("single-ads", ["ad" => $ad]);
+
