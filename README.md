@@ -11,18 +11,19 @@ NTRA is a web application designed to help students and employees of the Najot T
 
 ## Technologies Used
 
-- **Frontend:**    |   (will be added in future updates😁)
+- **Frontend:**    
     - HTML5
     - CSS3
+    - Tailwind CSS
     - JavaScript (React)   
 
 - **Backend:**
-    - PHP (Laravel)
+    - PHP core | (Laravel may be added in future updates 👩‍💻)
 
 - **Database:**
     - MySQL
 
-- **API Testing and Development:**   |   (will be added in future updates😁)
+- **API Testing and Development:**   |   (will be added in future updates 👩‍💻)
     - Postman
     - Ngrok for local server exposure
 
@@ -45,7 +46,25 @@ To run this project locally, follow these steps:
 2. **Install dependencies:**
     ```shell
     composer install
+   
     npm install
+    
+    # (   # installs nvm &#40;Node Version Manager&#41;)
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh 
+    
+    # download and install Node.js (you may need to restart the terminal)
+    nvm install 20
+    
+    # verifies the right Node.js version is in the environment
+    node -v # should print `v20.16.0`
+    
+    # verifies the right npm version is in the environment
+    npm -v # should print `10.8.1`
+   
+    # install Tailwind CSS
+    npm install -D tailwindcss
+    npx tailwindcss init
+   
     ```
 
 3. **Set up the database:**
@@ -58,15 +77,6 @@ To run this project locally, follow these steps:
 4. **Set up environment variables:**
    Create a `.env` file in the root directory and configure it according to your database and environment settings.
 
-5. **Run migrations:**
-    ```shell
-    php artisan migrate
-    ```
-
-6. **Start the development server:**
-    ```shell
-    php artisan serve
-    ```
 
 ## Usage
 
