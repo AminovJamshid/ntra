@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Router;
 
-Router::get('/', fn()=> loadView('home'));
+Router::get('/', fn()=> loadController('home'));
 
 Router::get('/ads/{id}', function (int $id) {
     loadController('showAd', ['id'=>$id]);

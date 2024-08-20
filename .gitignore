@@ -3,3 +3,4 @@ vendor
 .env
 node_modules
 public/styles/main.css
+public/assets
