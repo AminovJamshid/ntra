@@ -188,14 +188,10 @@ loadPartials('navbar');
                                     <div class="grid grid-cols-12 gap-5">
 
                                         <div class="col-span-12">
-                                            <div class="position-relative">
-                                                <label for="status-create" class="font-medium">Status</label>
-                                                <select name="status" class="form-select form-input w-full py-2 h-10 bg-white dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-100 focus:border-gray-200 dark:border-gray-800 dark:focus:border-gray-700 focus:ring-0" id="yearchart">
-                                                    <option value="active" selected>Active</option>
-                                                    <option value="deactivate">Deactivate</option>
-                                                </select>
-                                            </div>
+                                            <label for="status" class="font-medium">Status</label>
+                                            <input name="status" id="status" type="text" class="form-input mt-2" placeholder="Ads status :">
                                         </div>
+
                                     </div>
 
                                     <button type="submit" id="submit" name="send" class="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-700 text-white rounded-md mt-5">Add Status</button>
