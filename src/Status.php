@@ -28,7 +28,7 @@ class Status
         return $stmt->execute();
     }
 
-    public function getStatus(int $id)
+    public function showStatus(int $id)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM `status` WHERE id = :id");
         $stmt->bindParam(':id', $id);
@@ -42,4 +42,5 @@ class Status
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
+
 }
