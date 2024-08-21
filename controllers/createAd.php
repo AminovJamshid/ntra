@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+
 $title       = $_POST['title'];
 $description = $_POST['description'];
 $price       = (float) $_POST['price'];
@@ -25,7 +26,7 @@ if ($_POST['title']
     $newAdsId = (new \App\Ads())->createAds(
         $title,
         $description,
-        5,
+        2,
         1,
         1,
         $address,
