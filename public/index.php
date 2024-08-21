@@ -7,5 +7,10 @@ require "../router.php";
 /**
  * TODO:
  * 1. Create status page
- * 2.
+ *        - /status
+ *        - /status/create
+ * 2. Create branch page
+ *        - /branches
+ *        - /branches/create
+ * 3. Connect Ads and Statuses and Branches
  */
