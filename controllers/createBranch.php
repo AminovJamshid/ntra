@@ -1,8 +1,11 @@
 <?php
 
 if ($_POST['branch']) {
-    (new App\Branch())->createBranch($_POST['branch'], $_POST['branch_address']);
+    $branch = new App\Branch();
 
-    header('Location: /ads/create');
-    exit;
+    $branch->createBranch($_POST['branch'], $_POST['branch_address']);
+
+    header('Location:/branches');
+
 }
+

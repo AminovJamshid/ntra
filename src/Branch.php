@@ -32,12 +32,11 @@ class Branch
         return $stmt->execute();
     }
 
-    public function getBranch(int $id)
+    public function getBranch()
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM branch WHERE id = :id");
-        $stmt->bindParam(':id', $id);
+        $stmt = $this->pdo->prepare("SELECT * FROM branch");
         $stmt->execute();
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 
     public function deleteBranch(int $id): bool

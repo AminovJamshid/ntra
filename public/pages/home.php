@@ -48,18 +48,6 @@ loadPartials('navbar');
                                 <span class="text-slate-400">Price</span>
                                 <p class="text-lg font-medium">$<?php echo htmlspecialchars($ad->price);?></p>
                             </li>
-
-<!--                            <li>-->
-<!--                                <span class="text-slate-400">Rating</span>-->
-<!--                                <ul class="text-lg font-medium text-amber-400 list-none">-->
-<!--                                    <li class="inline"><i class="mdi mdi-star"></i></li>-->
-<!--                                    <li class="inline"><i class="mdi mdi-star"></i></li>-->
-<!--                                    <li class="inline"><i class="mdi mdi-star"></i></li>-->
-<!--                                    <li class="inline"><i class="mdi mdi-star"></i></li>-->
-<!--                                    <li class="inline"><i class="mdi mdi-star"></i></li>-->
-<!--                                    <li class="inline text-black dark:text-white">5.0(30)</li>-->
-<!--                                </ul>-->
-<!--                            </li>-->
                         </ul>
                     </div>
                 </div><!--end property content-->

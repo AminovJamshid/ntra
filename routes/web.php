@@ -24,4 +24,5 @@ Router::post('/status/create', fn()=> loadController('createStatus'));
 
 Router::get('/branch/create', fn()=> loadView('dashboard/create-branch'));
 Router::post('/branch/create', fn()=> loadController('createBranch'));
+Router::get('/branches', fn()=> loadController('showBranches'));
 Router::errorResponse(404, 'Not Found');
