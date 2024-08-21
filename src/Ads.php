@@ -24,7 +24,7 @@ class Ads
         string $address,
         float  $price,
         int    $rooms,
-    ): array|false {
+    ): false|string {
         $query = "INSERT INTO ads (title, description, user_id, status_id, branch_id, address, price, rooms, created_at) 
                   VALUES (:title, :description, :user_id, :status_id, :branch_id, :address, :price, :rooms, NOW())";
 
@@ -39,12 +39,16 @@ class Ads
         $stmt->bindParam(':rooms', $rooms);
         $stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->pdo->lastInsertId();
     }
 
     public function getAd($id)
     {
-        $query = "SELECT * FROM ads WHERE id = :id";
+        $query = "SELECT ads.*, name AS image
+                  FROM ads
+                    JOIN ads_image ON ads.id = ads_image.ads_id
+                  WHERE ads.id = :id";
+
         $stmt  = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

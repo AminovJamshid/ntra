@@ -210,10 +210,10 @@ loadPartials('navbar');
                                         </div>
 
                                         <div class="md:col-span-4 col-span-12">
-                                            <label for="desc" class="font-medium">Ta'rif</label>
+                                            <label for="description" class="font-medium">Ta'rif</label>
                                             <div class="form-icon relative mt-2">
                                                 <i class="mdi mdi-arrow-expand-all absolute top-2 start-4 text-green-600"></i>
-                                                <textarea name="desc" id="desc" class="form-input ps-11" placeholder="E'lon bo'yicha ta'rif..."></textarea>
+                                                <textarea name="description" id="description" class="form-input ps-11" placeholder="E'lon bo'yicha ta'rif..."></textarea>
                                             </div>
                                         </div>
 
