@@ -12,7 +12,7 @@ Router::get('/ads/{id}', function (int $id) {
 
 Router::get('/login', fn() => loadController('loginUser'));
 Router::get('/register', fn() => loadController('registerUser'));
-Router::get('/logout', fn() => loadController('logoutUser.php'));
+Router::get('/logout', fn() => loadController('logoutUser'));
 
 Router::post('/login', fn() => loadController('loginUser'));
 Router::post('/register', fn() => loadController('registerUser'));

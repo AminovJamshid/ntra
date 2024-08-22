@@ -2,4 +2,4 @@
 
 declare(strict_types=1);
 
-(new \App\Users())->logout();
+(new \App\User())->logout();

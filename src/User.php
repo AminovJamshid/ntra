@@ -83,7 +83,7 @@ class User
         } else {
             $user = $this->create();
             $_SESSION['user'] = $user->username;
-            header('location: /');
+            header('location: /ads/create');
         }
         exit();
     }
@@ -113,7 +113,7 @@ class User
 
         if (password_verify($password, $result->password)) {
             $_SESSION['user'] = $result->username;
-            header('location: /');
+            header('location: /ads/create');
         } else {
             $_SESSION['error'] = "Wrong phone number or password";
             header('location: /login');
