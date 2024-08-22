@@ -10,6 +10,11 @@ Router::get('/ads/{id}', function (int $id) {
     loadController('showAd', ['id'=>$id]);
 });
 
+Router::get('/login', fn() => loadController('loginUser'));
+Router::get('/register', fn() => loadController('registerUser.php'));
+Router::get('/logout', fn() => loadController('logoutUser.php'));
+
+
 Router::get('/ads/create', fn()=> loadController('create-ad'));
 Router::post('/ads/create', fn()=> loadController('createAd'));
 

@@ -24,6 +24,9 @@
     <link href="../assets/libs/@iconscout/unicons/css/line.css" type="text/css" rel="stylesheet" />
     <link href="../assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../assets/css/tailwind.css" />
+    <link rel="stylesheet" href="../styles/style.css" />
+
+
 
 </head>
 
