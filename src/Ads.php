@@ -24,9 +24,10 @@ class Ads
         string $address,
         float  $price,
         int    $rooms,
+        float  $square
     ): false|string {
-        $query = "INSERT INTO ads (title, description, user_id, status_id, branch_id, address, price, rooms, created_at) 
-                  VALUES (:title, :description, :user_id, :status_id, :branch_id, :address, :price, :rooms, NOW())";
+        $query = "INSERT INTO ads (title, description, user_id, status_id, branch_id, address, price, rooms, square, created_at, updated_at) 
+                  VALUES (:title, :description, :user_id, :status_id, :branch_id, :address, :price, :rooms, :square, NOW() , NOW())";
 
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':title', $title);
@@ -37,6 +38,7 @@ class Ads
         $stmt->bindParam(':address', $address);
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':rooms', $rooms);
+        $stmt->bindParam(':square', $square);
         $stmt->execute();
 
         return $this->pdo->lastInsertId();

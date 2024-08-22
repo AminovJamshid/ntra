@@ -9,12 +9,14 @@ $price       = (float) $_POST['price'];
 $branch      = (int) $_POST['branch'];
 $address     = $_POST['address'];
 $rooms       = (int) $_POST['rooms'];
+$square      = (float) $_POST['square'];
 
 if ($_POST['title']
     && $_POST['description']
     && $_POST['price']
     && $_POST['address']
     && $_POST['rooms']
+    && $_POST['square']
 ) {
 
 
@@ -31,7 +33,8 @@ if ($_POST['title']
         1,
         $address,
         $price,
-        $rooms
+        $rooms,
+        $square
     );
 
     if ($newAdsId) {
