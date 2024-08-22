@@ -1,5 +1,7 @@
 <?php
 
+session_abort();
+
 require "../bootstrap.php";
 require "../helpers.php";
 require "../router.php";

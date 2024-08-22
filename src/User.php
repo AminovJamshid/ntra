@@ -17,15 +17,16 @@ class User
 
     public function insertUser(
         string $username,
+//        string $position,
         string $gender,
         int    $phone,
         string $password): bool
     {
-        $query = "INSERT INTO users (username, position ,gender, phone, password, created_at) 
-                  VALUES (:username, :position ,:gender, :phone, :password, NOW())";
+        $query = "INSERT INTO users (username ,gender, phone, password, created_at) 
+                  VALUES (:username,:gender, :phone, :password, NOW())";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':position', $position);
+//        $stmt->bindParam(':position', $position);
         $stmt->bindParam(':gender', $gender);
         $stmt->bindParam(':phone', $phone);
         $stmt->bindParam(':password', $password);
@@ -86,6 +87,22 @@ class User
         }
         exit();
     }
+    public function create()
+    {
+        $username = $_POST['username'];
+//        $position = $_POST['position'];
+        $gender = $_POST['gender'];
+        $phone = $_POST['phone'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+        if (strlen($phone) == 9) {
+            $this->insertUser($username, $gender, $phone, $password);
+            return $this->getUser($phone);
+        }
+        $_SESSION['error'] = "Wrong information entered";
+        header('location: /register');
+        exit();
+    }
 
     #[NoReturn] public function login(): void
     {
@@ -112,20 +129,4 @@ class User
     }
 
 
-    public function create()
-    {
-        $username = $_POST['username'];
-        $position = $_POST['position'];
-        $gender = $_POST['gender'];
-        $phone = $_POST['phone'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-        if (strlen($phone) == 9) {
-            $this->insertUser($username, $position ,$gender, $phone, $password);
-            return $this->getUser($phone);
-        }
-        $_SESSION['error'] = "Wrong information entered";
-        header('location: /register');
-        exit();
-    }
 }
