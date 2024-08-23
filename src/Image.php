@@ -30,7 +30,9 @@ class Image
     {
         // Check if file uploaded
         if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-            exit('Error: '.$_FILES['image']['error']);
+            if($_FILES['image']['error'] == 4)
+                return 'default.jpg';
+            exit('Error: '. $_FILES['image']['error']);
         }
 
         // Extract file name and path
