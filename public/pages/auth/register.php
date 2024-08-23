@@ -23,7 +23,7 @@ loadPartials('navbar');
                     <span class="icon"><ion-icon name="call"></ion-icon></span>
                     <input type="tel" id="phone" name="phone" pattern="\d{1, 9}" maxlength="9" inputmode="numeric" style="padding-left: 50px" required oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9);">
                     <label>Phone number</label>
-                    <span class="code">+998</span>
+                    <span class="code">🇺🇿   +998</span>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
