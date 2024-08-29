@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Controller;
 
-namespace Controllers;
-
-use PDO;
-
 class AdController
 {
     public function show(int $id): void
@@ -28,26 +24,23 @@ class AdController
         $price       = (float) $_POST['price'];
         $address     = $_POST['address'];
         $rooms       = (int) $_POST['rooms'];
-        $square      = (float) $_POST['square'];
 
         if ($_POST['title']
             && $_POST['description']
             && $_POST['price']
             && $_POST['address']
             && $_POST['rooms']
-            && $_POST['square']
         ) {
             // TODO: Replace hardcoded values
             $newAdsId = (new \App\Ads())->createAds(
                 $title,
                 $description,
-                5,
+                2,
                 1,
                 1,
                 $address,
                 $price,
-                $rooms,
-                $square
+                $rooms
             );
 
             if ($newAdsId) {
