@@ -50,7 +50,10 @@
                 </li>
 
                 <li>
-                    <a href="explore-property.html"><i class="mdi mdi-home-city me-2"></i>Explore Properties</a>
+                    <a href="/profile-ads"><i class="mdi mdi-home-city me-2"></i>Explore Properties</a>
+                </li>
+                <li>
+                    <a href="/branches"><i class="mdi mdi-home-group me-2"></i>Explore Branches</a>
                 </li>
 
                 <li>
@@ -62,8 +65,18 @@
                     <div class="sidebar-submenu">
                         <ul>
                             <li><a href="/ads/create">Create Ad</a></li>
-                            <li><a href="/status/create">Create Status</a></li>
                             <li><a href="/branch/create">Create Branch</a></li>
+                            <li><a href="/status/create">Create Status</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="sidebar-dropdown">
+                    <a href="javascript:void(0)"><i class="mdi mdi-account-edit me-2"></i>User Profile</a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li><a href="/profile">Profile</a></li>
+                            <li><a href="profile-setting.html">Profile Settings</a></li>
                         </ul>
                     </div>
                 </li>
@@ -226,7 +239,7 @@
                         <div class="dropdown-menu absolute end-0 m-0 mt-4 z-10 w-44 rounded-md overflow-hidden bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 hidden" onclick="event.stopPropagation();">
                             <ul class="py-2 text-start">
                                 <li>
-                                    <a href="profile.html" class="block py-1 px-4 dark:text-white/70 hover:text-green-600 dark:hover:text-white"><i class="mdi mdi-account-outline me-2"></i>Profile</a>
+                                    <a href="/profile" class="block py-1 px-4 dark:text-white/70 hover:text-green-600 dark:hover:text-white"><i class="mdi mdi-account-outline me-2"></i>Profile</a>
                                 </li>
                                 <li>
                                     <a href="chat.html" class="block py-1 px-4 dark:text-white/70 hover:text-green-600 dark:hover:text-white"><i class="mdi mdi-chat-outline me-2"></i>Chat</a>
@@ -239,7 +252,7 @@
                                     <a href="lock-screen.html" class="block py-1 px-4 dark:text-white/70 hover:text-green-600 dark:hover:text-white"><i class="mdi mdi-lock-outline me-2"></i>Lockscreen</a>
                                 </li>
                                 <li>
-                                    <a href="login.html" class="block py-1 px-4 dark:text-white/70 hover:text-green-600 dark:hover:text-white"><i class="mdi mdi-logout me-2"></i>Logout</a>
+                                    <a href="/logout" class="block py-1 px-4 dark:text-white/70 hover:text-green-600 dark:hover:text-white"><i class="mdi mdi-logout me-2"></i>Logout</a>
                                 </li>
                             </ul>
                         </div>

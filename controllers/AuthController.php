@@ -1,20 +1,33 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Controller;
-
-use App\Auth;
+namespace Controllers;
 
 class AuthController
 {
-
     public function login(): void
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-        (new Auth())->login($username, $password);
+            loadView('auth/login.php');
+            return;
+        }
+
+        (new \App\Auth())->login();
     }
 
+    public function register(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+            loadView('auth/register.php');
+            return;
+        }
+
+        (new \App\Auth())->register();
+    }
+
+    public function logout(): void
+    {
+        (new \App\Auth())->logout();
+    }
 }

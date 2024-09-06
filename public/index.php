@@ -1,18 +1,11 @@
 <?php
 
-session_abort();
+declare(strict_types=1);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+require '../bootstrap.php';
+require '../helpers.php';
+require '../router.php';
 
-require "../bootstrap.php";
-require "../helpers.php";
-require "../router.php";
-
-/**
- * TODO:
- * 1. Create status page
- *        - /status
- *        - /status/create
- * 2. Create branch page
- *        - /branches
- *        - /branches/create
- * 3. Connect Ads and Statuses and Branches
- */

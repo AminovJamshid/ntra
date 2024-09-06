@@ -1,11 +1,19 @@
 <?php
 
-if ($_POST['branch']) {
-    $branch = new App\Branch();
+declare(strict_types=1);
 
-    $branch->createBranch($_POST['branch'], $_POST['branch_address']);
 
-    header('Location:/branches');
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+    loadDashboard('createBranch.php');
+    exit();
 
 }
 
+
+$branchName = $_POST['branch'];
+$branchAddress = $_POST['address'];
+
+if (isset($branchName) && isset($branchAddress)) {
+    (new \App\Branch())->insertBranch($branchName, $branchAddress);
+}

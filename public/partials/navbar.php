@@ -1,13 +1,10 @@
 <!-- Start Navbar -->
 <nav id="topnav" class="defaultscroll is-sticky">
     <div class="container relative">
-        <!-- Start Logo container-->
-        <a class="logo" href="index.html">
-                    <span class="inline-block dark:hidden">
-                        <img src="assets/images/logo-dark.png" class="l-dark" height="24" alt="">
-                        <img src="assets/images/logo-light.png" class="l-light" height="24" alt="">
-                    </span>
-            <img src="assets/images/logo-light.png" height="24" class="hidden dark:inline-block" alt="">
+        <!-- Logo container-->
+        <a class="logo" href="/">
+            <img src="../assets/images/logo-dark.png" class="inline-block dark:hidden" alt="">
+            <img src="../assets/images/logo-light.png" class="hidden dark:inline-block" alt="">
         </a>
         <!-- End Logo container-->
 
@@ -27,18 +24,28 @@
 
         <!--Login button Start-->
         <ul class="buy-button list-none mb-0">
-            <li class="inline mb-0">
-                <a href="auth-login.html" class="btn btn-icon bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i data-feather="user" class="size-4 stroke-[3]"></i></a>
-            </li>
-            <li class="sm:inline ps-1 mb-0 hidden">
-                <a href="auth-signup.html" class="btn bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Signup</a>
-            </li>
+            <?php if ((new \App\Session())->getUser()): ?>
+                <li class="sm:inline ps-1 mb-0 hidden">
+                    <a href="/ads/create" class="btn bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Create Ad</a>
+                </li>
+
+                <li class="inline mb-0">
+                    <a href="/profile-ads" class="btn btn-icon bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full"><i data-feather="user" class="size-4 stroke-[3]"></i></a>
+                </li>
+            <?php else: ?>
+                <li class="sm:inline ps-1 mb-0 hidden">
+                    <a href="/login" class="btn bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Login</a>
+                </li>
+                <li class="sm:inline ps-1 mb-0 hidden">
+                    <a href="/register" class="btn bg-green-600 hover:bg-green-700 border-green-600 dark:border-green-600 text-white rounded-full">Register</a>
+                </li>
+            <?php endif; ?>
         </ul>
         <!--Login button End-->
 
         <div id="navigation">
             <!-- Navigation Menu-->
-            <ul class="navigation-menu justify-end nav-light">
+            <ul class="navigation-menu justify-end">
                 <li class="has-submenu parent-parent-menu-item">
                     <a href="javascript:void(0)">Home</a><span class="menu-arrow"></span>
 

@@ -15,14 +15,14 @@ class Image
         $this->pdo = DB::connect();
     }
 
-    public function addImage(int $adsId, string $name): bool
+    public function addImage(int $adsId, string $imageName): bool
     {
-        $query = "INSERT INTO ads_image (ads_id, name)
+        $query = "INSERT INTO images (ads_id, image_name)
                  VALUES (:ads_id, :name)";
 
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(':ads_id', $adsId);
-        $statement->bindParam(':name', $name);
+        $statement->bindParam(':name', $imageName);
         return $statement->execute();
     }
 
@@ -30,9 +30,7 @@ class Image
     {
         // Check if file uploaded
         if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-            if($_FILES['image']['error'] == 4)
-                return 'default.jpg';
-            exit('Error: '. $_FILES['image']['error']);
+            exit('Error: '.$_FILES['image']['error']);
         }
 
         // Extract file name and path
@@ -58,5 +56,4 @@ class Image
 
         return $fileName;
     }
-
 }

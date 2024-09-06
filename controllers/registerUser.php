@@ -8,4 +8,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     exit();
 }
 
-(new \App\User())->register();
+(new \App\Users())->register();

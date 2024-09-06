@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth" dir="ltr">
+<html lang="en" class="light scroll-smooth" dir="ltr">
 <head>
     <meta charset="UTF-8" />
     <title>Hously - Tailwind CSS Real Estate Landing & Admin Dashboard Template</title>
@@ -26,8 +26,16 @@
     <link rel="stylesheet" href="../assets/css/tailwind.css" />
     <link rel="stylesheet" href="../styles/style.css" />
 
-
-
 </head>
 
 <body class="dark:bg-slate-900">
+<!-- Loader Start -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<!-- Loader End -->

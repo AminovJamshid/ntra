@@ -3,23 +3,37 @@
 declare(strict_types=1);
 
 use App\Router;
-use Controller\AdController;
 
-Router::get('/', fn() => loadController('home'));
+Router::get('/', fn() => loadController('homeView.php'));
+Router::get('/ads/{id}', fn(int $id) => (new \Controller\AdsController())->show($id));
 
-Router::get('/ads/{id}', fn(int $id) => (new AdController())->show($id));
-Router::get('/ads/create', fn() => loadView('dashboard/create-ad'));
-Router::post('/ads/create', fn() => (new AdController())->create());
 
-// Statuses
-Router::get('/status/create', fn() => loadView('dashboard/create-status'));
-Router::post('/status/create', fn() => loadController('createStatus'));
+Router::get('/login', fn() => (new \Controller\AuthController())->login(), 'guest');
+Router::get('/register', fn() => (new \Controller\AuthController())->register(), 'guest');
+Router::get('/logout', fn() => (new \Controller\AuthController())->logout(), 'auth');
 
-Router::get('/login', fn() => loadView('auth/login'), 'guest');
 
 Router::post('/login', fn() => (new \Controller\AuthController())->login());
+Router::post('/register', fn() => (new \Controller\AuthController())->register());
 
-Router::get('/admin', fn() => loadView('dashboard/home'), 'auth');
-Router::get('/profile2', fn() => (new \Controller\UserController())->loadProfile());
+
+Router::get('/ads/create', fn() => (new \Controller\AdsController())->create(), 'auth');
+Router::get('/status/create', fn() => loadController('createStatus.php'), 'auth');
+
+
+Router::get('/branches', fn() => (new \Controller\BranchController())->showBranches(), 'auth');
+Router::get('/branch/create', fn() => (new \Controller\BranchController())->showCreatePage(), 'auth');
+Router::post('/branch/create', fn() => (new \Controller\BranchController())->createBranch());
+
+
+
+Router::post('/ads/create', fn() => (new \Controller\AdsController())->create());
+Router::post('/status/create', fn() => loadController('createStatus.php'));
+
+Router::get('/profile', fn() => loadController('profileView.php'), 'auth');
+Router::get('/profile-ads', fn() => (new \Controller\ProfileController())->showAds(), 'auth');
+Router::get('/profile-ads/{id}', fn(int $id) => (new \Controller\ProfileController())->showAd($id), 'auth');
+
+
 
 Router::errorResponse(404, 'Not Found');

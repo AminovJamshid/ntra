@@ -6,7 +6,7 @@ use JetBrains\PhpStorm\NoReturn;
 use PDO;
 
 // UsersGateway
-class User
+class Users
 {
     private PDO $pdo;
 
@@ -77,7 +77,7 @@ class User
     {
         $_SESSION['error'] = null;
         if ($this->isUserExists()) {
-            $_SESSION['error'] = "This User already exists";
+            $_SESSION['error'] = "This Users already exists";
             header('location: /register');
 
         } else {

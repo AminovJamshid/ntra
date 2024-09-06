@@ -5,7 +5,7 @@ declare(strict_types=1);
  * @var $branches
  */
 
-loadPartials('headerDash');
+loadPartial('headerDash.php');
 ?>
 
 
@@ -90,7 +90,7 @@ loadPartials('headerDash');
                                     <label for="desc" class="font-medium">Ta'rif</label>
                                     <div class="form-icon relative mt-2">
                                         <i class="mdi mdi-text absolute top-2 start-4 text-green-600"></i>
-                                        <textarea name="description" id="description" class="form-input ps-11" placeholder="E'lon bo'yicha ta'rif..." required></textarea>
+                                        <textarea name="desc" id="desc" class="form-input ps-11" placeholder="E'lon bo'yicha ta'rif..." required></textarea>
                                     </div>
                                 </div>
 
@@ -104,7 +104,7 @@ loadPartials('headerDash');
 
                                 <div class="md:col-span-4 col-span-12 hidden">
                                     <div class="form-icon relative mt-2">
-                                        <input name="user" value="19" type="number" class="form-input ps-11">
+                                        <input name="user" value="<?=(new \App\Session())->getId() ?>" type="number" class="form-input ps-11">
                                     </div>
                                 </div>
 
@@ -127,5 +127,5 @@ loadPartials('headerDash');
 
 
 <?php
-loadPartials('footerDash');
+loadPartial('footerDash.php');
 ?>

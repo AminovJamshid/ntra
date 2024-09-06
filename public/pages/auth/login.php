@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
-loadPartials('header');
-loadPartials('navbar');
+loadPartial('header.php');
+loadPartial('navbar.php');
 ?>
 <div class="container_style">
     <div class="wrapper">
@@ -42,5 +42,4 @@ loadPartials('navbar');
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-<?php loadPartials('footer');?>
-
+<?php loadPartial('footer.php');?>
