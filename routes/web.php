@@ -18,7 +18,7 @@ Router::post('/register', fn() => (new \Controller\AuthController())->register()
 
 
 Router::get('/ads/create', fn() => (new \Controller\AdsController())->create(), 'auth');
-Router::get('/status/create', fn() => loadController('createStatus.php'), 'auth');
+Router::post('/ads/create', fn() => (new \Controller\AdsController())->create());
 
 
 Router::get('/branches', fn() => (new \Controller\BranchController())->showBranches(), 'auth');
@@ -26,14 +26,14 @@ Router::get('/branch/create', fn() => (new \Controller\BranchController())->show
 Router::post('/branch/create', fn() => (new \Controller\BranchController())->createBranch());
 
 
-
-Router::post('/ads/create', fn() => (new \Controller\AdsController())->create());
+Router::get('/status/create', fn() => loadController('createStatus.php'), 'auth');
 Router::post('/status/create', fn() => loadController('createStatus.php'));
+
 
 Router::get('/profile', fn() => loadController('profileView.php'), 'auth');
 Router::get('/profile-ads', fn() => (new \Controller\ProfileController())->showAds(), 'auth');
 Router::get('/profile-ads/{id}', fn(int $id) => (new \Controller\ProfileController())->showAd($id), 'auth');
 
-
+Router::get('/profile-users', fn() => (new \Controller\UserController())->showUsers(), 'auth');
 
 Router::errorResponse(404, 'Not Found');

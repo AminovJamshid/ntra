@@ -1,16 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Controllers;
-
-use App\Ads;
 
 class UserController
 {
-    public function loadProfile(): void
+    public function showUsers(): void
     {
-        $ads = (new Ads())->getAds($_SESSION['user']['id']);
-        loadView('profile', ['ads' => $ads], false);
+        $users = (new \App\Users())->getUser();
+        loadDashboard('users.php', ['users' => $users]);
     }
 }
