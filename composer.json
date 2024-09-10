@@ -1,14 +1,14 @@
 {
-    "name": "nt/rentapp",
-    "description": "najot ta'lim rent app",
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/",
-            "Controllers\\": "controllers/"
-        }
-    },
-    "require": {
-        "vlucas/phpdotenv": "^5.6",
-        "ext-pdo": "*"
+  "name": "nt/rentapp",
+  "description": "najot ta'lim rent app",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "Controllers\\": "controllers/"
     }
+  },
+  "require": {
+    "vlucas/phpdotenv": "^5.6",
+    "ext-pdo": "*"
+  }
 }

@@ -34,3 +34,4 @@ Router::get('/admin/users/update/{id}', fn(int $id) => (new UserController())->u
 Router::get('/search', fn() => (new AdController())->search());
 
 Router::errorResponse(404, 'Not Found');
+

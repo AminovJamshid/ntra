@@ -3,9 +3,10 @@
    Email: support@shreethemes.in
    Website: https://shreethemes.in
    Version: 2.2.0
-   Created: May 2022
+   Created: June 2022
    File Description: Main JS file of the template
 */
+
 
 /*********************************/
 /*         INDEX                 */
@@ -13,14 +14,15 @@
  *     01.  Loader               *
  *     02.  Toggle Menus         *
  *     03.  Active Menu          *
- *     04.  Admin Menu           *
- *     05.  Clickable Menu       *
- *     06.  Menu Sticky          *
- *     07.  Back to top          *
+ *     04.  Clickable Menu       *
+ *     05.  Menu Sticky          *
+ *     06.  Back to top          *
+ *     07.  Active Sidebar Menu  *
  *     08.  Feather icon         *
- *     09.  Dark & Light Mode    *
- *     10.  LTR & RTL Mode       *
- *     11.  Small Menu  *
+ *     09.  Small Menu           *
+ *     10.  Contact JS           *
+ *     11.  Light & Dark Theme   *
+ *     12.  LTR & RTL Mode       *
  ================================*/
 
 window.addEventListener('load', fn, false)
@@ -28,20 +30,20 @@ window.addEventListener('load', fn, false)
 //  window.onload = function loader() {
 function fn() {
     // Preloader
-    if(document.getElementById('preloader')){
+    if (document.getElementById('preloader')) {
         setTimeout(() => {
             document.getElementById('preloader').style.visibility = 'hidden';
             document.getElementById('preloader').style.opacity = '0';
         }, 350);
     }
-
     // Menus
     activateMenu();
-    activateSidebarMenu();
 }
 
 //Menu
-// Toggle menu
+/*********************/
+/* Toggle Menu */
+/*********************/
 function toggleMenu() {
     document.getElementById('isToggle').classList.toggle('open');
     var isOpen = document.getElementById('navigation')
@@ -51,8 +53,9 @@ function toggleMenu() {
         isOpen.style.display = "block";
     }
 };
-
-//Menu Active
+/*********************/
+/*    Menu Active    */
+/*********************/
 function getClosest(elem, selector) {
 
     // Element.matches() polyfill
@@ -66,7 +69,7 @@ function getClosest(elem, selector) {
             function (s) {
                 var matches = (this.document || this.ownerDocument).querySelectorAll(s),
                     i = matches.length;
-                while (--i >= 0 && matches.item(i) !== this) { }
+                while (--i >= 0 && matches.item(i) !== this) {}
                 return i > -1;
             };
     }
@@ -92,18 +95,29 @@ function activateMenu() {
 
         if (matchingMenuItem) {
             matchingMenuItem.classList.add('active');
+         
+         
             var immediateParent = getClosest(matchingMenuItem, 'li');
+      
             if (immediateParent) {
                 immediateParent.classList.add('active');
             }
+            
+            var parent = getClosest(immediateParent, '.child-menu-item');
+            if(parent){
+                parent.classList.add('active');
+            }
 
-            var parent = getClosest(matchingMenuItem, '.parent-menu-item');
+            var parent = getClosest(parent || immediateParent , '.parent-menu-item');
+        
             if (parent) {
                 parent.classList.add('active');
+
                 var parentMenuitem = parent.querySelector('.menu-item');
                 if (parentMenuitem) {
                     parentMenuitem.classList.add('active');
                 }
+
                 var parentOfParent = getClosest(parent, '.parent-parent-menu-item');
                 if (parentOfParent) {
                     parentOfParent.classList.add('active');
@@ -117,71 +131,34 @@ function activateMenu() {
         }
     }
 }
-
-//Admin Menu
-function activateSidebarMenu() {
-    var current = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
-    if (current !== "" && document.getElementById("sidebar")){
-        var menuItems = document.querySelectorAll('#sidebar a');
-        for (var i = 0, len = menuItems.length; i < len; i++) {
-            if (menuItems[i].getAttribute("href").indexOf(current) !== -1) {
-                menuItems[i].parentElement.className += " active";
-                if(menuItems[i].closest(".sidebar-submenu")) {
-                    menuItems[i].closest(".sidebar-submenu").classList.add("block");
-                }
-                if(menuItems[i].closest(".sidebar-dropdown")) {
-                    menuItems[i].closest(".sidebar-dropdown").classList.add("active");
-                }
-            }
-        }
-    }
-}
-
-if(document.getElementById("close-sidebar")){
-    document.getElementById("close-sidebar").addEventListener("click", function() {
-        document.getElementsByClassName("page-wrapper")[0].classList.toggle("toggled");
-    });
-}
-
-// Clickable Menu
-if(document.getElementById("navigation")){
+/*********************/
+/*  Clickable manu   */
+/*********************/
+if (document.getElementById("navigation")) {
     var elements = document.getElementById("navigation").getElementsByTagName("a");
-    for(var i = 0, len = elements.length; i < len; i++) {
+    for (var i = 0, len = elements.length; i < len; i++) {
         elements[i].onclick = function (elem) {
-            if(elem.target.getAttribute("href") === "javascript:void(0)") {
+            if (elem.target.getAttribute("href") === "javascript:void(0)") {
                 var submenu = elem.target.nextElementSibling.nextElementSibling;
                 submenu.classList.toggle('open');
             }
         }
     }
 }
-
-if(document.getElementById("sidebar")){
-    var elements = document.getElementById("sidebar").getElementsByTagName("a");
-    for(var i = 0, len = elements.length; i < len; i++) {
-        elements[i].onclick = function (elem) {
-            if(elem.target !== document.querySelectorAll("li.sidebar-dropdown.active > a")[0]){
-                document.querySelectorAll("li.sidebar-dropdown.active")[0]?.classList?.toggle("active");
-                document.querySelectorAll("div.sidebar-submenu.block")[0]?.classList?.toggle("block");
-            }
-            if(elem.target.getAttribute("href") === "javascript:void(0)") {
-                elem.target.parentElement.classList.toggle("active");
-                elem.target.nextElementSibling.classList.toggle("block");
-            }
-        }
-    }
-}
-
-// Menu sticky
+/*********************/
+/*   Menu Sticky     */
+/*********************/
 function windowScroll() {
-    var navbar = document.getElementById("topnav");
-    if(navbar === null) {
-        
-    }else if( document.body.scrollTop >= 50 ||
-    document.documentElement.scrollTop >= 50){
-        navbar.classList.add("nav-sticky");
-    }else {
-        navbar.classList.remove("nav-sticky");
+    const navbar = document.getElementById("topnav");
+    if (navbar != null) {
+        if (
+            document.body.scrollTop >= 50 ||
+            document.documentElement.scrollTop >= 50
+        ) {
+            navbar.classList.add("nav-sticky");
+        } else {
+            navbar.classList.remove("nav-sticky");
+        }
     }
 }
 
@@ -189,20 +166,24 @@ window.addEventListener('scroll', (ev) => {
     ev.preventDefault();
     windowScroll();
 })
+/*********************/
+/*    Back To TOp    */
+/*********************/
 
-// back-to-top
 window.onscroll = function () {
     scrollFunction();
 };
 
 function scrollFunction() {
     var mybutton = document.getElementById("back-to-top");
-    if(mybutton === null) {
-        
-    }else if( document.body.scrollTop > 500 || document.documentElement.scrollTop > 500){
-        mybutton.style.display = "block";
-    }else {
-        mybutton.style.display = "none";
+    if(mybutton!=null){
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            mybutton.classList.add("flex");
+            mybutton.classList.remove("hidden");
+        } else {
+            mybutton.classList.add("hidden");
+            mybutton.classList.remove("flex");
+        }
     }
 }
 
@@ -211,10 +192,9 @@ function topFunction() {
     document.documentElement.scrollTop = 0;
 }
 
-//Feather icon
-feather.replace();
-
-//ACtive Sidebar
+/*********************/
+/*  Active Sidebar   */
+/*********************/
 (function () {
     var current = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);;
     if (current === "") return;
@@ -226,6 +206,84 @@ feather.replace();
     }
 })();
 
+/*********************/
+/*   Feather Icons   */
+/*********************/
+feather.replace();
+
+/*********************/
+/*     Small Menu    */
+/*********************/
+try {
+    var spy = new Gumshoe('#navmenu-nav a');
+} catch (err) {
+
+}
+
+
+/*********************/
+/*     Contact Form  */
+/*********************/
+
+try {
+    function validateForm() {
+        var name = document.forms["myForm"]["name"].value;
+        var email = document.forms["myForm"]["email"].value;
+        var subject = document.forms["myForm"]["subject"].value;
+        var comments = document.forms["myForm"]["comments"].value;
+        document.getElementById("error-msg").style.opacity = 0;
+        document.getElementById('error-msg').innerHTML = "";
+        if (name == "" || name == null) {
+            document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning error_message'>*Please enter a Name*</div>";
+            fadeIn();
+            return false;
+        }
+        if (email == "" || email == null) {
+            document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning error_message'>*Please enter a Email*</div>";
+            fadeIn();
+            return false;
+        }
+        if (subject == "" || subject == null) {
+            document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning error_message'>*Please enter a Subject*</div>";
+            fadeIn();
+            return false;
+        }
+        if (comments == "" || comments == null) {
+            document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning error_message'>*Please enter a Comments*</div>";
+            fadeIn();
+            return false;
+        }
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("simple-msg").innerHTML = this.responseText;
+                document.forms["myForm"]["name"].value = "";
+                document.forms["myForm"]["email"].value = "";
+                document.forms["myForm"]["subject"].value = "";
+                document.forms["myForm"]["comments"].value = "";
+            }
+        };
+        xhttp.open("POST", "php/contact.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("name=" + name + "&email=" + email + "&subject=" + subject + "&comments=" + comments);
+        return false;
+    }
+
+    function fadeIn() {
+        var fade = document.getElementById("error-msg");
+        var opacity = 0;
+        var intervalID = setInterval(function () {
+            if (opacity < 1) {
+                opacity = opacity + 0.5
+                fade.style.opacity = opacity;
+            } else {
+                clearInterval(intervalID);
+            }
+        }, 200);
+    }
+} catch (error) {
+    
+}
 
 /*********************/
 /* Dark & Light Mode */
@@ -252,7 +310,6 @@ try {
     
 }
 
-
 /*********************/
 /* LTR & RTL Mode */
 /*********************/
@@ -273,12 +330,3 @@ try{
     switcherRtl?.addEventListener("click" ,changeLayout )
 }
 catch(err){}
-
-/*********************/
-/*     Small Menu    */
-/*********************/
-try {
-    var spy = new Gumshoe('#navmenu-nav a');
-} catch (err) {
-
-}
