@@ -1,30 +1,43 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
-use PDO;
-
-// BranchGateway
 class Branch
 {
-    private PDO $pdo;
+    private \PDO $pdo;
 
     public function __construct()
     {
         $this->pdo = DB::connect();
     }
 
-    public function insertBranch(string $name, string $address): bool
+    public function createBranch(string $name, string $address): bool
     {
-        $stmt = $this->pdo->prepare("INSERT INTO branch (name, address) VALUES (:name, :address)");
+        $stmt = $this->pdo->prepare("INSERT INTO branch (name, address, created_at)
+                                          VALUES (:name, :address, NOW())");
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':address', $address);
         return $stmt->execute();
     }
 
+    public function updateBranch(int $id, string $name, string $address): bool
+    {
+        $stmt = $this->pdo->prepare("UPDATE branch SET name = :name, address = :address WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':address', $address);
+
+        return $stmt->execute();
+    }
+
     public function getBranch(int $id)
     {
-        return $this->pdo->query("SELECT * FROM branch WHERE id = {$id}")->fetch();
+        $stmt = $this->pdo->prepare("SELECT * FROM branch WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch();
     }
 
     public function getBranches(): false|array
@@ -32,4 +45,10 @@ class Branch
         return $this->pdo->query("SELECT * FROM branch")->fetchAll();
     }
 
+    public function deleteBranch(int $id): bool
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM branch WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
 }

@@ -1,80 +1,62 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
-use JetBrains\PhpStorm\NoReturn;
+use PDO;
 
-class Auth extends Users
+class Auth
 {
-    #[NoReturn] public function register(): void
-    {
-        $_SESSION['error'] = null;
-        if ($this->isUserExists()) {
-            $_SESSION['error'] = "This Users already exists";
-            redirect("/register");
+    private PDO $pdo;
 
-        } else {
-            $user = $this->create();
+    public function __construct()
+    {
+        $this->pdo = DB::connect();
+    }
+
+    public function login(string $username, string $password)
+    {
+        // Get user or fail
+        $user = (new User())->getByUsername($username, $password);
+
+        // Get users role
+        $query = "SELECT users.*, user_roles.role_id
+                  FROM users
+                      JOIN user_roles ON users.id = user_roles.user_id
+                  WHERE id = $user->id";
+
+
+        // |public
+        // |- dashboard/profile
+        // |--- assets
+        // |--- pages
+        // |--- partials
+        // |- public
+        // |--- assets
+        // |--- pages
+        // |--- partials
+
+
+        // Execute query
+        $userWithRoles = $this->pdo->query($query)->fetch();
+
+        if ($userWithRoles) {
             $_SESSION['user'] = [
-                'id' => $user->id,
-                'username' => $user->username,
-            ];
-            redirect('/profile-ads');
-        }
-        exit();
-    }
-
-    #[NoReturn] public function login(): void
-    {
-        $phone = $_POST['phone'];
-        $password = $_POST['password'];
-
-        $user = $this->getUser($phone);
-
-
-        if (password_verify($password, $user->password)) {
-            $_SESSION['user'] = [
-                'id' => $user->id,
-                'username' => $user->username,
+                'username' => $userWithRoles->username,
+                'id'       => $userWithRoles->id,
+                'role'     => $userWithRoles->role_id
             ];
 
-            redirect('/profile-ads');
-        } else {
-            $_SESSION['error'] = "Wrong phone number or password";
-            redirect('/login');
+            if ($userWithRoles->role_id === Role::ADMIN) {
+                redirect('/admin');
+            }
+
+            unset($_SESSION['message']['error']);
+            redirect('/profile2');
         }
-        exit();
-    }
 
-    #[NoReturn] public function logout(): void
-    {
-        session_destroy();
-        redirect('/');
-        exit();
-    }
-
-    public function isUserExists(): bool
-    {
-        if (isset($_POST['phone'])) {
-            $phone = $_POST['phone'];
-            return (bool)$this->getUser($phone);
-        }
-        return false;
-    }
-
-    public function create()
-    {
-        $username = $_POST['username'];
-        $gender = $_POST['gender'];
-        $phone = $_POST['phone'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-        if (strlen($phone) == 9) {
-            $this->insertUser($username, $gender, $phone, $password);
-            return $this->getUser($phone);
-        }
-        $_SESSION['error'] = "Wrong information entered";
-        redirect("/register");
-        exit();
+        $_SESSION['message']['error'] = "Wrong email or password";
+        redirect('/login');
     }
 }

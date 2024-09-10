@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\middlewares;
 
 use App\Session;
 
 class Authentication
 {
-    public function middleware(string|null $middleware = null): void
+    public function handle(string|null $middleware = null): void
     {
         if (!$middleware) {
             return;

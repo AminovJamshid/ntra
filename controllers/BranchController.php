@@ -1,30 +1,16 @@
 <?php
 
-namespace Controller;
+declare(strict_types=1);
+
+namespace Controllers;
+
+use App\Branch;
 
 class BranchController
 {
-    public function createBranch(): void
+    public function index(): void
     {
-        $branchName = trim($_POST['branch']);
-        $branchAddress = trim($_POST['address']);
-
-        if ($branchName && $branchAddress) {
-            (new \App\Branch())->insertBranch($branchName, $branchAddress);
-            redirect('/branches');
-        } else {
-            redirect('/branch/create');
-        }
-    }
-
-    public function showCreatePage(): void
-    {
-        loadDashboard('createBranch.php');
-    }
-
-    public function showBranches(): void
-    {
-        $branches = (new \App\Branch())->getBranches();
-        loadDashboard('showBranches.php', ['branches' => $branches]);
+        $branches = (new Branch())->getBranches();
+        loadView('dashboard/branches', ['branches' => $branches]);
     }
 }

@@ -2,55 +2,84 @@
 
 declare(strict_types=1);
 
-function dd($args): void
+use App\Ads;
+
+function dd($args)
 {
-    echo '<pre>';
+    echo "<pre>";
     print_r($args);
-    echo '</pre>';
+    echo "</pre>";
     die();
 }
 
 function getAds(): false|array
 {
-    return (new \App\Ads())->getAds();
+    return (new Ads())->getAds();
 }
 
 function basePath(string $path): string
 {
-    return __DIR__ . $path;
+    return __DIR__.$path;
 }
 
-function loadView(string $path, array $data = []): void
+function loadView(string $path, array|null $args = null, bool $loadFromPublic = true): void
 {
-
-    if (is_array($data)) {
-        extract($data);
-    }
-    require basePath('/public/pages/' . $path);
-}
-
-function loadPartial(string $path): void
-{
-    require basePath('/public/partials/' . $path);
-}
-
-function loadController(string $path, array|null $data = null): void
-{
-    if (is_array($data)) {
-        extract($data);
+    if ($loadFromPublic) {
+        $file = "/public/pages/$path.php";
+    } else {
+        $file = "/resources/views/pages/$path.php";
     }
 
-    require basePath('/controllers/' . $path);
+    $filePath = basePath($file);
+
+    if (!file_exists($filePath)) {
+        echo "Required view not found: $filePath";
+        return;
+    }
+
+    if (is_array($args)) {
+        extract($args);
+    }
+    require $filePath;
 }
 
-
-function loadDashboard(string $path, array|null $data = null): void
+function loadPartials(string $path, array|null $args = null, bool $loadFromPublic = true): void
 {
-
-    if (is_array($data)) {
-        extract($data);
+    if (is_array($args)) {
+        extract($args);
     }
-    require basePath('/public/dashboard/' . $path);
+
+    if ($loadFromPublic) {
+        $file = "/public/partials/$path.php";
+    } else {
+        $file = "/resources/views/partials/$path.php";
+    }
+
+    require basePath($file);
+}
+
+function loadComponent(string $path, array|null $args = null): void
+{
+    if (is_array($args)) {
+        extract($args);
+    }
+
+    $file = basePath("/resources/views/components/$path.php");
+
+    if (!file_exists($file)) {
+        echo "Required component not found: $file";
+        return;
+    }
+
+    require $file;
+}
+
+function loadController(string $path, array|null $args = null): void
+{
+    if (is_array($args)) {
+        extract($args);
+    }
+    require basePath('/controllers/'.$path.'.php');
 }
 
 function redirect(string $url): void

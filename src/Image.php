@@ -10,19 +10,22 @@ class Image
 {
     private PDO $pdo;
 
+    const string DEFAULT_IMAGE = 'default.jpg';
+    const string DEFAULT_PATH  = '/assets/images/';
+
     public function __construct()
     {
         $this->pdo = DB::connect();
     }
 
-    public function addImage(int $adsId, string $imageName): bool
+    public function addImage(int $adsId, string $name): bool
     {
-        $query = "INSERT INTO images (ads_id, image_name)
+        $query = "INSERT INTO ads_image (ads_id, name)
                  VALUES (:ads_id, :name)";
 
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(':ads_id', $adsId);
-        $statement->bindParam(':name', $imageName);
+        $statement->bindParam(':name', $name);
         return $statement->execute();
     }
 
@@ -30,8 +33,9 @@ class Image
     {
         // Check if file uploaded
         if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-            exit('Error: '.$_FILES['image']['error']);
+            return 'default.jpg';
         }
+
 
         // Extract file name and path
         $name       = $_FILES['image']['name'];
@@ -55,5 +59,12 @@ class Image
         }
 
         return $fileName;
+    }
+
+    public static function show(string|null $file = null): string
+    {
+        return $file
+            ? '/assets/images/ads/'.$file
+            : self::DEFAULT_PATH.self::DEFAULT_IMAGE;
     }
 }
