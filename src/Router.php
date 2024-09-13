@@ -106,8 +106,6 @@ class Router
                     exit();
                 }
             }
-            $callback();
-            exit();
         }
     }
 
