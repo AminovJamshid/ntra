@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.3.0, for macos14.2 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.39, for Linux (x86_64)
 --
 -- Host: localhost    Database: ntra
 -- ------------------------------------------------------
--- Server version	8.3.0
+-- Server version	8.0.39-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -41,7 +41,7 @@ CREATE TABLE `ads` (
   CONSTRAINT `ads_branch` FOREIGN KEY (`branch_id`) REFERENCES `branch` (`id`),
   CONSTRAINT `ads_status` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`),
   CONSTRAINT `ads_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `ads` (
 
 LOCK TABLES `ads` WRITE;
 /*!40000 ALTER TABLE `ads` DISABLE KEYS */;
-INSERT INTO `ads` VALUES (2,'10 xonali kvartira isjaraga beriladi','desc',6,1,1,'Chilonzor',100,4,'2024-08-09 13:09:43',NULL),(3,'20 xonali kvartira isjaraga beriladi','desc 2',6,1,1,'Xorazm',200,4,'2024-08-09 13:09:43',NULL),(5,'Dacha arenda','Super cheap and awesome dacha',6,1,1,'Malibu beach',10000,12,'2024-08-16 14:56:28',NULL),(6,'Title','desc',6,1,1,'adress',100,1,'2024-08-20 12:14:45',NULL),(7,'Title','desc',6,1,1,'address',100,100,'2024-08-20 12:16:32',NULL),(8,'Title','desc',6,1,1,'address',100,100,'2024-08-20 12:17:48',NULL),(9,'Title','desc',6,1,1,'address',100,100,'2024-08-20 12:18:57',NULL),(10,'','',6,1,1,'',0,0,'2024-08-20 12:23:22',NULL),(11,'','',6,1,1,'',0,0,'2024-08-20 12:37:43',NULL),(12,'','',6,1,1,'',0,0,'2024-08-20 12:37:59',NULL),(13,'123','123',6,1,1,'213',123,123,'2024-08-20 14:32:37',NULL),(14,'098','098',6,1,1,'098',987,98,'2024-08-20 14:35:01',NULL),(15,'Title','description',6,1,1,'Address',100,12,'2024-08-22 13:14:14',NULL),(16,'Title','description',6,1,1,'Address',100,12,'2024-08-22 13:15:03',NULL),(17,'Title','description',6,1,1,'Address',100,12,'2024-08-22 13:17:14',NULL),(18,'Tit','13',6,1,1,'123',213,123,'2024-08-22 13:21:17',NULL),(19,'Tit','13',6,1,1,'123',213,123,'2024-08-22 13:46:43',NULL),(20,'Tit','13',6,1,1,'123',213,123,'2024-08-22 13:47:06',NULL),(21,'Tit','13',6,1,1,'123',213,123,'2024-08-22 13:48:08',NULL),(22,'Tit','13',6,1,1,'123',213,123,'2024-08-22 13:48:19',NULL),(23,'Tit','13',6,1,1,'123',213,123,'2024-08-22 13:48:41',NULL),(24,'Tit','13',6,1,1,'123',213,123,'2024-08-22 13:49:12',NULL),(25,'1','12',5,1,2,'й3',123,23,'2024-08-22 13:59:59',NULL),(30,'New ad branch 1','new desc                                                            ',5,1,1,'new address',100,1,'2024-09-08 19:13:38',NULL),(31,'New ad branch 20 xonali kvartira isjaraga beriladi\n','new desc                                                            ',5,1,2,'new address',100,1,'2024-09-08 19:27:17',NULL),(32,'New ad2','new desc22',5,1,2,'new address',200,222,'2024-09-08 19:27:40','2024-09-08 20:10:41'),(33,'New ad2321','new desc',5,1,2,'new address',200,232,'2024-09-08 19:29:57','2024-09-08 20:21:17');
+INSERT INTO `ads` VALUES (2,'10 xonali kvartira isjaraga beriladi','desc',6,1,1,'Chilonzor',100,4,'2024-08-09 08:09:43',NULL),(3,'20 xonali kvartira isjaraga beriladi','desc 2',6,1,1,'Xorazm',200,4,'2024-08-09 08:09:43',NULL),(5,'Dacha arenda','Super cheap and awesome dacha',6,1,1,'Malibu beach',10000,12,'2024-08-16 09:56:28',NULL),(6,'Title','desc',6,1,1,'adress',100,1,'2024-08-20 07:14:45',NULL),(7,'Title','desc',6,1,1,'address',100,100,'2024-08-20 07:16:32',NULL),(8,'Title','desc',6,1,1,'address',100,100,'2024-08-20 07:17:48',NULL),(9,'Title','desc',6,1,1,'address',100,100,'2024-08-20 07:18:57',NULL),(10,'','',6,1,1,'',0,0,'2024-08-20 07:23:22',NULL),(11,'','',6,1,1,'',0,0,'2024-08-20 07:37:43',NULL),(12,'','',6,1,1,'',0,0,'2024-08-20 07:37:59',NULL),(13,'123','123',6,1,1,'213',123,123,'2024-08-20 09:32:37',NULL),(15,'Title','description',6,1,1,'Address',100,12,'2024-08-22 08:14:14',NULL),(16,'Title','description',6,1,1,'Address',100,12,'2024-08-22 08:15:03',NULL),(17,'Title','description',6,1,1,'Address',100,12,'2024-08-22 08:17:14',NULL),(18,'Tit','13',6,1,1,'123',213,123,'2024-08-22 08:21:17',NULL),(19,'Tit','13',6,1,1,'123',213,123,'2024-08-22 08:46:43',NULL),(20,'Tit','13',6,1,1,'123',213,123,'2024-08-22 08:47:06',NULL),(21,'Tit','13',6,1,1,'123',213,123,'2024-08-22 08:48:08',NULL),(22,'Tit','13',6,1,1,'123',213,123,'2024-08-22 08:48:19',NULL),(23,'Tit','13',6,1,1,'123',213,123,'2024-08-22 08:48:41',NULL),(24,'Tit','13',6,1,1,'123',213,123,'2024-08-22 08:49:12',NULL),(30,'New ad branch 1','new desc                                                            ',5,1,1,'new address',100,1,'2024-09-08 14:13:38',NULL),(31,'New ad branch 20 xonali kvartira isjaraga beriladi\n','new desc                                                            ',5,1,2,'new address',100,1,'2024-09-08 14:27:17',NULL),(32,'New ad2','new desc22',5,1,2,'new address',200,222,'2024-09-08 14:27:40','2024-09-08 15:10:41'),(33,'New ad2321','new desc',5,1,2,'new address',200,232,'2024-09-08 14:29:57','2024-09-08 15:21:17'),(34,'kvartira bor','hamma sharoit bor',5,1,1,'chilonzor',777,7,'2024-09-13 13:10:51',NULL),(35,'SHERIK KERAK','sharoiti yaxshi',5,1,1,'Farg\'ona  shahri, Al-Farg\'oniy ko\'chasi, 11 - uy',150,2,'2024-09-13 13:13:12',NULL);
 /*!40000 ALTER TABLE `ads` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,7 +68,7 @@ CREATE TABLE `ads_image` (
   PRIMARY KEY (`id`),
   KEY `ads_image_ads_id_fk` (`ads_id`),
   CONSTRAINT `ads_image_ads_id_fk` FOREIGN KEY (`ads_id`) REFERENCES `ads` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +77,7 @@ CREATE TABLE `ads_image` (
 
 LOCK TABLES `ads_image` WRITE;
 /*!40000 ALTER TABLE `ads_image` DISABLE KEYS */;
-INSERT INTO `ads_image` VALUES (1,14,'66c4a995eef40___image 1.png'),(2,17,'66c73a5ae6ba3___image 4.png'),(7,30,'66ddf7624984f___image 5.png'),(8,31,'66ddfa956f4e8___image 5.png'),(9,32,'66ddfaac40d32___image 5.png'),(10,33,'66ddfb3516bbb___image 5.png');
+INSERT INTO `ads_image` VALUES (2,17,'66c73a5ae6ba3___image 4.png'),(7,30,'66ddf7624984f___image 5.png'),(8,31,'66ddfa956f4e8___image 5.png'),(9,32,'66ddfaac40d32___image 5.png'),(10,33,'66ddfb3516bbb___image 5.png'),(11,34,'default.jpg'),(12,35,'default.jpg');
 /*!40000 ALTER TABLE `ads_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,7 +104,7 @@ CREATE TABLE `branch` (
 
 LOCK TABLES `branch` WRITE;
 /*!40000 ALTER TABLE `branch` DISABLE KEYS */;
-INSERT INTO `branch` VALUES (1,'Farg\'ona','Farg\'ona, Farg\'ona, 1','2024-08-09 13:08:20',NULL),(2,'Xorazm','Xorazm, Xorazm, 2','2024-08-01 10:35:48',NULL);
+INSERT INTO `branch` VALUES (1,'Farg\'ona','Farg\'ona, Farg\'ona, 1','2024-08-09 08:08:20',NULL),(2,'Xorazm','Xorazm, Xorazm, 2','2024-08-01 05:35:48',NULL);
 /*!40000 ALTER TABLE `branch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +179,7 @@ CREATE TABLE `user_roles` (
 
 LOCK TABLES `user_roles` WRITE;
 /*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
-INSERT INTO `user_roles` VALUES (5,1),(6,1);
+INSERT INTO `user_roles` VALUES (5,1),(6,2);
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +211,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'user@mail.com','123','Bekzodbro','ustoz','male','7777777777','2024-08-08 14:19:10','2024-08-08 14:26:36'),(6,NULL,'123','Nasriddinbro','pahan','male','998997777778','2024-08-08 14:40:39',NULL);
+INSERT INTO `users` VALUES (5,'user@mail.com','123','Bekzodbro','ustoz','male','7777777777','2024-08-08 09:19:10','2024-08-08 09:26:36'),(6,NULL,'123','Nasriddinbro','pahan','male','998997777778','2024-08-08 09:40:39',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -224,4 +224,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-11 18:50:24
+-- Dump completed on 2024-09-14 17:35:20
