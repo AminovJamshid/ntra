@@ -111,7 +111,7 @@ loadPartials('navbar');
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
                                 <li class="flex items-center me-4">
                                     <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                    <span>8000sqf</span>
+                                    <span><?= $ad->branch_name ?></span>
                                 </li>
 
                                 <li class="flex items-center me-4">

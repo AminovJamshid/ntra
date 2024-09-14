@@ -67,7 +67,9 @@ class Ads
         $query = "SELECT *, 
                         ads.id AS id,
                         ads.address AS address,
-                        ads_image.name AS image
+                        ads_image.name AS image,
+                        branch.name    AS branch_name
+                        
                   FROM ads
                     JOIN branch ON branch.id = ads.branch_id
                     LEFT JOIN ads_image ON ads.id = ads_image.ads_id";

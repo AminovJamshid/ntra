@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar-wrapper sidebar-dark">
     <div class="sidebar-content">
         <div class="sidebar-brand">
-            <a href="/admin"><img src="/dashboard/assets/images/logo-light.png" alt=""></a>
+            <a href="/"><img src="/dashboard/assets/images/logo-light.png" alt=""></a>
         </div>
 
         <ul class="sidebar-menu border-t border-white/10" data-simplebar style="height: calc(100% - 70px);">

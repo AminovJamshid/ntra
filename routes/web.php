@@ -22,6 +22,10 @@ Router::post('/status/create', fn() => loadController('createStatus'));
 Router::get('/login', fn() => loadView('auth/login'), 'guest');
 Router::post('/login', fn() => (new \Controllers\AuthController())->login());
 
+Router::get('/logout', fn() => loadView('auth/logout'));
+Router::get('/about', fn() => loadView('about', loadFromPublic: false));
+
+
 Router::get('/admin', fn() => loadView('dashboard/home'), 'auth');
 Router::get('/admin/ads', fn() => (new AdController())->index(), 'auth');
 Router::get('/admin/branches', fn() => (new \Controllers\BranchController())->index(), 'auth');
