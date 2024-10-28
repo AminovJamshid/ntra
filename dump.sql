@@ -23,24 +23,24 @@ DROP TABLE IF EXISTS `ads`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ads` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) DEFAULT NULL,
-  `description` text,
-  `user_id` int DEFAULT NULL,
-  `status_id` int DEFAULT NULL,
-  `branch_id` int DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `price` float DEFAULT NULL,
-  `rooms` int DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `ads_status` (`status_id`),
-  KEY `ads_branch` (`branch_id`),
-  KEY `ads_user` (`user_id`),
-  CONSTRAINT `ads_branch` FOREIGN KEY (`branch_id`) REFERENCES `branch` (`id`),
-  CONSTRAINT `ads_status` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`),
-  CONSTRAINT `ads_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                       `id` int NOT NULL AUTO_INCREMENT,
+                       `title` varchar(255) DEFAULT NULL,
+                       `description` text,
+                       `user_id` int DEFAULT NULL,
+                       `status_id` int DEFAULT NULL,
+                       `branch_id` int DEFAULT NULL,
+                       `address` varchar(255) DEFAULT NULL,
+                       `price` float DEFAULT NULL,
+                       `rooms` int DEFAULT NULL,
+                       `created_at` timestamp NULL DEFAULT NULL,
+                       `updated_at` timestamp NULL DEFAULT NULL,
+                       PRIMARY KEY (`id`),
+                       KEY `ads_status` (`status_id`),
+                       KEY `ads_branch` (`branch_id`),
+                       KEY `ads_user` (`user_id`),
+                       CONSTRAINT `ads_branch` FOREIGN KEY (`branch_id`) REFERENCES `branch` (`id`),
+                       CONSTRAINT `ads_status` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`),
+                       CONSTRAINT `ads_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -116,9 +116,9 @@ DROP TABLE IF EXISTS `roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `roles` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+                         `id` int NOT NULL AUTO_INCREMENT,
+                         `name` varchar(255) DEFAULT NULL,
+                         PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -140,9 +140,9 @@ DROP TABLE IF EXISTS `status`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `status` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+                          `id` int NOT NULL AUTO_INCREMENT,
+                          `name` varchar(255) DEFAULT NULL,
+                          PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -164,12 +164,12 @@ DROP TABLE IF EXISTS `user_roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_roles` (
-  `user_id` int DEFAULT NULL,
-  `role_id` int DEFAULT NULL,
-  KEY `user_roles_roles_id_fk` (`role_id`),
-  KEY `user_roles_users_id_fk` (`user_id`),
-  CONSTRAINT `user_roles_roles_id_fk` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `user_roles_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                              `user_id` int DEFAULT NULL,
+                              `role_id` int DEFAULT NULL,
+                              KEY `user_roles_roles_id_fk` (`role_id`),
+                              KEY `user_roles_users_id_fk` (`user_id`),
+                              CONSTRAINT `user_roles_roles_id_fk` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+                              CONSTRAINT `user_roles_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -191,17 +191,17 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `position` varchar(255) DEFAULT NULL,
-  `gender` enum('male','female') DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_pk` (`phone`)
+                         `id` int NOT NULL AUTO_INCREMENT,
+                         `email` varchar(255) DEFAULT NULL,
+                         `password` varchar(255) DEFAULT NULL,
+                         `username` varchar(255) DEFAULT NULL,
+                         `position` varchar(255) DEFAULT NULL,
+                         `gender` enum('male','female') DEFAULT NULL,
+                         `phone` varchar(255) DEFAULT NULL,
+                         `created_at` timestamp NULL DEFAULT NULL,
+                         `updated_at` timestamp NULL DEFAULT NULL,
+                         PRIMARY KEY (`id`),
+                         UNIQUE KEY `users_pk` (`phone`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
